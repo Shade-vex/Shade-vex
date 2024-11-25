@@ -1,0 +1,28 @@
+local player = game.Players.LocalPlayer
+local character = player.Character or player.CharacterAdded:Wait()
+local humanoid = character:WaitForChild("Humanoid")
+
+-- Điều chỉnh tốc độ đi lại
+humanoid.WalkSpeed = 50  -- Tốc độ mặc định là 16
+
+Thêm Menu bật/tắt Mod
+
+local screenGui = Instance.new("ScreenGui")
+local toggleButton = Instance.new("TextButton")
+
+screenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+toggleButton.Size = UDim2.new(0, 200, 0, 50)
+toggleButton.Position = UDim2.new(0.5, -100, 0.5, -25)
+toggleButton.Text = "Tăng tốc độ"
+toggleButton.Parent = screenGui
+
+toggleButton.MouseButton1Click:Connect(function()
+    local humanoid = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+    if humanoid.WalkSpeed == 16 then
+        humanoid.WalkSpeed = 50
+        toggleButton.Text = "Tốc độ bình thường"
+    else
+        humanoid.WalkSpeed = 16
+        toggleButton.Text = "Tăng tốc độ"
+    end
+end)
