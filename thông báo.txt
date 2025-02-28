@@ -1,0 +1,8 @@
+local ChatService = game:GetService("ReplicatedStorage"):FindFirstChild("DefaultChatSystemChatEvents")
+local message = "<font color='Yellow'>!!! A god has joined the game, welcome ADMIN SHADE VEX !!!</font>"
+
+if ChatService then
+    ChatService.SayMessageRequest:FireServer(message, "All")
+else
+    warn("Chat system not found! This game may have disabled global chat.")
+end
